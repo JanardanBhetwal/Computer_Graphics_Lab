@@ -1,2 +1,4 @@
 .vscode
 *.exe
+boilerplate.cpp
+Hut.cpp
