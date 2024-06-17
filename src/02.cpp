@@ -18,7 +18,7 @@ int main()
     int gm, x, y, gd = DETECT;
     char path[] = "C:\\MinGW\\lib\\libbgi.a"; //static file
     initgraph(&gd, &gm, path);
-    int x1 = 100, y1 = 100, x2 = 200, y2 = 500;
+    int x1 = 100, y1 = 100, x2 = 200, y2 = 150;
     int dx = x2 - x1;
     int dy=y2-y1;
     float m=dy/dx;
