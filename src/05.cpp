@@ -51,7 +51,7 @@ void trans_mul(int A[],int tx,int ty)
         {
             for(int k=0;k<3;k++)
             {
-                res[i][j]+=T[i][k]*A[k][j];
+                res[i][j]+=T[i][k]*A[k];
             }
         }
     }
