@@ -2,3 +2,5 @@
 *.exe
 boilerplate.cpp
 Hut.cpp
+*.bat
+ex.cpp
