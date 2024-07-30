@@ -33,17 +33,40 @@ void rotate3DBar(int l, int t, int r, int b, int depth, int topflag, float angle
     draw3DBar(l1, t1, r1, b1, depth, topflag);
 }
 
+void shear3DBar(int l, int t, int r, int b, int depth, int topflag, int shx, int shy) {
+    int l1 = l + shx * t;
+    int t1 = t + shy * l;
+    int r1 = r + shx * b;
+    int b1 = b + shy * r;
+    draw3DBar(l1, t1, r1, b1, depth, topflag);
+}
+
+void reflect3DBar(int l, int t, int r, int b, int depth, int topflag) {
+    // Reflect about the x-axis
+    int midy = getmaxy() / 2;
+    int midx=getmaxx()/2;
+    int new_l = midx - (l - midx);
+    int new_r = midx - (r - midx);
+
+    draw3DBar(new_l,t,new_r,b, depth, topflag);
+}
+
+
 int main() {
     int choice;
     do {
         cout << "Enter 1. for translation" << endl;
         cout << "Enter 2. for scaling" << endl;
         cout << "Enter 3. for rotation" << endl;
+        cout <<"Enter 4. for shear" << endl;
+        cout <<"Enter 5. for reflection" << endl;
+        cout << "Enter 6. for exit" << endl;
         cout << "Enter your choice" << endl;
         cin >> choice;
 
-        int gdriver = DETECT, gmode;
-        initgraph(&gdriver, &gmode, "C:\\MinGW\\lib\\libbgi.a"); // Updated this line
+        int gm, x, y, gd = DETECT;
+            char path[] = "C:\\MinGW\\lib\\libbgi.a"; //static file
+    initgraph(&gd, &gm, path);
 
         drawAxes();
 
@@ -75,14 +98,26 @@ int main() {
                 rotate3DBar(l, t, r, b, depth, topflag, angle);
                 break;
             }
+            case 4: {
+                int shx, shy;
+                cout << "Enter the shearing factors" << endl;
+                cin >> shx >> shy;
+                shear3DBar(l, t, r, b, depth, topflag, shx, shy);
+                break;
+            }
+            // implement reflection about x-axis only
+            case 5: {
+                reflect3DBar(l, t, r, b, depth, topflag);
+                break;
+            }
+
             default:
                 cout << "Invalid choice!" << endl;
         }
 
         getch();
         cleardevice();
-        closegraph();
-    } while (choice != 4);
-
+    } while (choice != 6);
+closegraph();
     return 0;
 }

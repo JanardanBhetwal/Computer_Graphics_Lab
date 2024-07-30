@@ -9,26 +9,18 @@ void getCode(float x,float y,float xmin,float ymin,float xmax,float ymax,float c
 {
     if(y>ymax)
         code[0]=1;
-    else
-        code[0]=0;
     if(y<ymin)
         code[1]=1;
-    else
-        code[1]=0;
     if(x>xmax)
         code[2]=1;
-    else
-        code[2]=0;
     if(x<xmin)
         code[3]=1;
-    else
-        code[3]=0;
 }
 
 void cohen_sutherland(float x1,float y1,float x2,float y2,float xmin,float ymin,float xmax,float ymax)
 {
     int i;
-    float code1[4],code2[4],flag=0,sum=0,m,xtemp,ytemp;
+    float code1[4]={0,0,0,0},code2[4]={0,0,0,0},flag=0,sum=0,m,xtemp,ytemp;
     if(x1==x2)
     {
         printf("Slope cannot be calculated.");

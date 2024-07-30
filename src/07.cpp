@@ -25,6 +25,20 @@ void liang_barsky(float x1, float y1, float x2, float y2, float xmin, float ymin
                 printf("Line is outside the window");
                 return;
             }
+            if(q[i]>0)
+            {
+                printf("line is inside the window");
+                if(i==0||i==1)
+                {
+                    y1=ymin;
+                    y2=ymax;
+                }
+                else{
+                    x1=xmin;
+                    x2=xmax;
+                }
+            }
+            break;
         } else {
              t = q[i] / p[i];
             if (p[i] < 0) {
@@ -48,7 +62,7 @@ void liang_barsky(float x1, float y1, float x2, float y2, float xmin, float ymin
 
 int main() {
     int gm, x, y, gd = DETECT;
-    float x1 = 100, y1 = 150, x2 = 400, y2 = 250, xmin = 50, ymin = 50, xmax = 300, ymax = 300;
+    float x1 = 100, y1 = 20, x2 = 100, y2 = 350, xmin = 50, ymin = 50, xmax = 300, ymax = 300;
     char path[] = "C:\\MinGW\\lib\\libbgi.a"; // Ensure the correct path to libbgi.a
     initgraph(&gd, &gm, path);
     
